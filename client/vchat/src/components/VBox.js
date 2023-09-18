@@ -1,7 +1,8 @@
-import React, { useEffect, useRef } from 'react';
-
-function VBox({ cameraOn }) {
+import React, { useEffect, useRef,useContext } from 'react';
+import chatContext from '../Provider/contex';
+function VBox() {
   const videoRef = useRef(null);
+  let cameraOn = useContext(chatContext);
 
   useEffect(() => {
     const startCamera = async () => {

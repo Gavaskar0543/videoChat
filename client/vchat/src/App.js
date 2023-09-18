@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import VBox from './components/VBox';
+import chatContext from './Provider/contex';
 
 function App() {
   const [isCameraOn, setCameraOn] = useState(false);
@@ -9,11 +10,13 @@ function App() {
   };
 
   return (
-    <div className='container w-100 d-flex-col justify-content-center align-items-center'>
-      <button onClick={toggleCamera}>
+    <div className='container w-100 d-flex justify-content-center align-items-center'>
+      <button className={`btn ${isCameraOn ? 'btn-outline-danger' : 'btn-outline-success'}`} onClick={toggleCamera}>
         {isCameraOn ? 'Turn Off Camera' : 'Turn On Camera'}
       </button>
-      <VBox cameraOn={isCameraOn} />
+     <chatContext.Provider value={isCameraOn}>
+       <VBox/>
+      </chatContext.Provider>
     </div>
   );
 }
